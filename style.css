@@ -1,0 +1,130 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f0f1a;
+  /* Dark blue-ish black */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  /* Let clicks pass through to canvas if needed, but button needs pointer-events: auto */
+}
+
+#click-btn {
+  pointer-events: auto;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.8em 1.6em;
+  font-size: 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.1s, opacity 0.5s;
+  background: linear-gradient(45deg, #eaf615, #e6e6eb);
+  color: rgb(23, 22, 22);
+  box-shadow: 0 0 15px rgba(232, 235, 123, 0.5);
+}
+
+#click-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(236, 255, 112, 0.8);
+}
+
+#click-btn:active {
+  transform: scale(0.95);
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#quote-container {
+  text-align: center;
+  margin-top: 20px;
+  /* Initially hidden, will be shown after animation */
+}
+
+#greeting {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  background: linear-gradient(to right, #fff, #aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#quote {
+  font-size: 1.2em;
+  font-style: italic;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Star animation classes if we use CSS stars, but we might use JS for that */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
